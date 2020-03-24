@@ -1,5 +1,5 @@
-<%= form_with(model: home, local: true) do |form| %>
-  <% if home.errors.any? %>
+<%= form_for(property) do  |form| %>
+  <% if property.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(home.errors.count, "error") %> prohibited this home from being saved:</h2>
 
@@ -36,17 +36,16 @@
     <%= form.text_area :remarks %>
   </div>
 
-<span>-----------------------------------------</span>
-<% n = 0 %>
-<%= form.fields_for :stations do |station| %>
-  <h3>Nearest station<%= n += 1 %></h3>
+<% s = 0 %>
+<%= form.fields_for :station do |station| %>
+  <h3>Nearest station<%= s += 1 %></h3>
     <tr>
       <td><%= station.label :line %></td>
       <td><%= station.text_field :line %></td>
       <td><%= station.label :name %></td>
       <td><%= station.text_field :name %></td>
       <td><%= station.label :minutes %></td>
-      <td><%= station.text_field :minutes %>分</td>
+      <td><%= station.text_field :minutes %></td>
     </tr>
 <% end %>
 
