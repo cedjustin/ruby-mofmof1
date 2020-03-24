@@ -37,8 +37,9 @@
   </div>
 
 <% s = 0 %>
+
 <%= form.fields_for :stations do |station| %>
-  <h3>Nearest station<%= s += 1 %></h3>
+  <h3>Nearest station <%= s += 1 %></h3>
     <tr>
       <td><%= station.label :line %></td>
       <td><%= station.text_field :line %></td>
@@ -47,9 +48,13 @@
       <td><%= station.label :minutes %></td>
       <td><%= station.number_field :minutes %></td>
     </tr>
-<% end %>
 
-    <div class="actions">
-      <%= form.submit "Save" %>
-    </div>
+<% end %>
+  <br>
+  <br>
+  <div class="actions">
+    <%= form.submit "Save" %>
+  </div>
+  <br>
+  <br>
 <% end %>

@@ -29,29 +29,32 @@
     <h2>Nearest station/s</h2>
 <%end%>
 
-<%= @property.stations.count %>
+<% s = 0 %>
+
 <% @property.stations.each do |station|%>
-  <%if station.line.blank? && station.name.blank? && station.minutes.blank?%>
-      <p>There is no near station set</p>
-  <% elsif station.line.blank? || station.name.blank? || station.minutes.blank? %>
-    <p>the info of the station are not complete</p>
+  <%if station.line.blank? && station.name.blank? && station.minutes.blank? %>
+    <h4>Click edit to add a station</h4>
   <% else %>
-    <p>
-        <strong>line:</strong>
-        <%= station.line %>
-    </p>
+    <h4>Station <%= s += 1 %></h4>
+    <tr>
+      <td>
+          <strong>line:</strong>
+          <%= station.line %>
+      </td>
 
-    <p>
-        <strong>name:</strong>
-        <%= station.name %>
-    </p>
+      <td>
+          <strong>name:</strong>
+          <%= station.name %>
+      </td>
 
-    <p>
-        <strong>minutes:</strong>
-        <%= station.minutes %>
-    </p>
+      <td>
+          <strong>minutes:</strong>
+          <%= station.minutes %>
+      </td>
+    </tr>
   <% end %>
 <% end %>
-
+<br>
+<br>
 <%= link_to 'edit', edit_property_path %> |
 <%= link_to 'back', properties_path %>
