@@ -25,11 +25,13 @@
   <%= @property.remarks %>
 </p>
 
-<h2>Nearest station/s</h2>
+<%if @property.stations?%>
+    <h2>Nearest station/s</h2>
+<%end%>
 <% n = 0 %>
   <% @property.stations.each do |station|%>
       <% if station.line.blank? || station.station.blank? || station.minutes.blank? %>
-        <p>there are no stations set yet</p>
+        <p>the info of the station are not complete</p>
       <% else %>
         <p>
             <strong>line:</strong>
@@ -49,4 +51,4 @@
   <% end %>
 
 <%= link_to 'edit', edit_property_path %> |
-<%= link_to 'back', propertys_path %>
+<%= link_to 'back', properties_path %>
