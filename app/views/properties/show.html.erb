@@ -1,0 +1,52 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>name:</strong>
+  <%= @property.name %>
+</p>
+
+<p>
+  <strong>rent:</strong>
+  <%= @property.rent %>円
+</p>
+
+<p>
+  <strong>address:</strong>
+  <%= @property.address %>
+</p>
+
+<p>
+  <strong>year:</strong>
+  <%= @property.year %>円
+</p>
+
+<p>
+  <strong>remarks:</strong>
+  <%= @property.remarks %>
+</p>
+
+<h2>Nearest station/s</h2>
+<% n = 0 %>
+  <% @property.stations.each do |station|%>
+      <% if station.line.blank? || station.station.blank? || station.minutes.blank? %>
+        <p>there are no stations set yet</p>
+      <% else %>
+        <p>
+            <strong>line:</strong>
+            <%= station.line %>
+        </p>
+
+        <p>
+            <strong>name:</strong>
+            <%= station.name %>
+        </p>
+
+        <p>
+            <strong>minutes:</strong>
+            <%= station.minutes %>
+        </p>
+      <% end %>
+  <% end %>
+
+<%= link_to 'edit', edit_property_path %> |
+<%= link_to 'back', propertys_path %>
