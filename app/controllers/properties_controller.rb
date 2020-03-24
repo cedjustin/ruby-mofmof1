@@ -32,6 +32,14 @@ class PropertiesController < ApplicationController
         end
     end
 
+    def update
+        if  @property.update( property_params )
+            redirect_to  @property ,  notice: 'Property was successfully updated.'
+        else
+            render  :edit
+        end
+    end
+
     def destroy
         @property.destroy
         redirect_to properties_path, notice:"property destroyed"
