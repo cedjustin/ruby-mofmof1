@@ -31,24 +31,26 @@
 
 <% n = 0 %>
   <% @property.stations.each do |station|%>
-      <% if station.line.blank? || station.station.blank? || station.minutes.blank? %>
-        <p>the info of the station are not complete</p>
-      <% else %>
-        <p>
-            <strong>line:</strong>
-            <%= station.line %>
-        </p>
+    <%if station.line.blank? && station.name.blank? && station.minutes.blank?%>
+        <p>There is no near station set</p>
+    <% elsif station.line.blank? || station.name.blank? || station.minutes.blank? %>
+    <p>the info of the station are not complete</p>
+    <% else %>
+    <p>
+        <strong>line:</strong>
+        <%= station.line %>
+    </p>
 
-        <p>
-            <strong>name:</strong>
-            <%= station.name %>
-        </p>
+    <p>
+        <strong>name:</strong>
+        <%= station.name %>
+    </p>
 
-        <p>
-            <strong>minutes:</strong>
-            <%= station.minutes %>
-        </p>
-      <% end %>
+    <p>
+        <strong>minutes:</strong>
+        <%= station.minutes %>
+    </p>
+    <% end %>
   <% end %>
 
 <%= link_to 'edit', edit_property_path %> |

@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(version: 20200324135520) do
     t.text     "remarks",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.         "property"
   end
 
   create_table "stations", force: :cascade do |t|
@@ -29,7 +28,6 @@ ActiveRecord::Schema.define(version: 20200324135520) do
     t.integer  "minutes"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.         "property"
     t.integer  "property_id"
     t.index ["property_id"], name: "index_stations_on_property_id"
   end

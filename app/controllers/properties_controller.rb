@@ -23,6 +23,9 @@ class PropertiesController < ApplicationController
     def show
     end
 
+    def edit
+    end
+
     def destroy
         @property.destroy
         redirect_to properties_path, notice:"property destroyed"
