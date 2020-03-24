@@ -5,6 +5,7 @@ class PropertiesController < ApplicationController
 
     def new
         @property = Property.new
+        @property.stations.build
     end
 
     private
