@@ -1,1 +1,34 @@
-<h1>hey</h1>
+<p  id="notice"> <%=  notice  %> </p>
+
+<h1> Properties </h1>
+
+<table>
+    <thead>
+        <tr>
+            <th> Property </th>
+            <th> Rent </th>
+            <th> Address </th>
+            <th> Building age </th>
+            <th> Remarks </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <%  @properties.each  do |prop| %>
+            <tr>
+                <Td><%=  prop.name  %></Td>
+                <Td><%=  prop.rent  %> Rwf </Td>
+                <Td><%=  prop.address %> </Td>
+                <td><%=  prop.year  %> year / years </td>
+                <td><%= prop.remarks %></td>
+                <td><%= link_to 'Show', prop %></td>
+                <td><%= link_to 'Edit', edit_property_path(prop) %></td>
+                <Td> <%=  link_to  'Destroy' ,  prop ,  method: :delete ,  data: {  Confirm: '? Are You Sure'  }  %> </Td>
+            </tr>
+        <% end%>
+    </tbody>
+</table>
+
+<Br>
+
+<%=  link_to  'New Property' ,new_property_path %>
