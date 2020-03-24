@@ -24,6 +24,12 @@ class PropertiesController < ApplicationController
     end
 
     def edit
+        if @property.stations.last.minutes.blank? &&
+            @property.stations.last.line.blank? &&
+            @property.stations.last.name.blank?
+        else
+            @property.stations.build
+        end
     end
 
     def destroy
