@@ -7,7 +7,7 @@
 
 <p>
   <strong>rent:</strong>
-  <%= @property.rent %>円
+  <%= @property.rent %>
 </p>
 
 <p>
@@ -17,7 +17,7 @@
 
 <p>
   <strong>year:</strong>
-  <%= @property.year %>円
+  <%= @property.year %>
 </p>
 
 <p>
@@ -25,9 +25,10 @@
   <%= @property.remarks %>
 </p>
 
-<%if @property.stations?%>
+<%if @property.stations.present?%>
     <h2>Nearest station/s</h2>
 <%end%>
+
 <% n = 0 %>
   <% @property.stations.each do |station|%>
       <% if station.line.blank? || station.station.blank? || station.minutes.blank? %>

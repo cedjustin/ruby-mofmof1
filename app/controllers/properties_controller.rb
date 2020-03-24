@@ -1,6 +1,6 @@
 class PropertiesController < ApplicationController
 
-    before_action :set_property, only: %i(show edit update destroy)
+    before_action :set_property, only: [:show, :edit, :update, :destroy]
 
     def index
         @properties = Property.all
@@ -14,13 +14,18 @@ class PropertiesController < ApplicationController
     def create
         @property = Property.new(property_params)
         if  @property.save
-            redirect_to  property_path ,  notice: 'Property was successfully created.'
+            redirect_to  @property ,  notice: 'Property was successfully created.'
         else
             render  :new
         end
     end
 
     def show
+    end
+
+    def destroy
+        @property.destroy
+        redirect_to properties_path, notice:"property destroyed"
     end
 
     private
@@ -30,7 +35,7 @@ class PropertiesController < ApplicationController
     end
 
     def property_params
-        params.require(:property).permit(:name, :rent, :address, :year, :remarks, stations_attributes: %i(id line name minutes Property_id))
+        params.require(:property).permit(:name, :rent, :address, :year, :remarks, stations_attributes: [:id, :line, :name, :minutes, :Property_id])
     end
     
 end

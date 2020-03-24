@@ -1,10 +1,10 @@
 <%= form_for(property) do  |form| %>
   <% if property.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(home.errors.count, "error") %> prohibited this home from being saved:</h2>
+      <h2><%= pluralize(property.errors.count, "error") %> prohibited this property from being saved:</h2>
 
       <ul>
-      <% home.errors.full_messages.each do |message| %>
+      <% property.errors.full_messages.each do |message| %>
         <td><%= message %></td>
       <% end %>
       </ul>
@@ -37,7 +37,7 @@
   </div>
 
 <% s = 0 %>
-<%= form.fields_for :station do |station| %>
+<%= form.fields_for :stations do |station| %>
   <h3>Nearest station<%= s += 1 %></h3>
     <tr>
       <td><%= station.label :line %></td>
@@ -45,7 +45,7 @@
       <td><%= station.label :name %></td>
       <td><%= station.text_field :name %></td>
       <td><%= station.label :minutes %></td>
-      <td><%= station.text_field :minutes %></td>
+      <td><%= station.number_field :minutes %></td>
     </tr>
 <% end %>
 
