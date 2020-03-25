@@ -36,10 +36,11 @@
     <%= form.text_area :remarks %>
   </div>
 
-<% s = 0 %>
-
+<h3>Nearest stations</h3>
+<span>(if you submit a station without full information it will be removed)<span>
+<br>
+<br>
 <%= form.fields_for :stations do |station| %>
-  <h3>Nearest station <%= s += 1 %></h3>
     <tr>
       <td><%= station.label :line %></td>
       <td><%= station.text_field :line %></td>
@@ -47,8 +48,7 @@
       <td><%= station.text_field :name %></td>
       <td><%= station.label :minutes %></td>
       <td><%= station.number_field :minutes %></td>
-    </tr>
-
+    </tr><br><br>
 <% end %>
   <br>
   <br>

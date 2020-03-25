@@ -9,11 +9,15 @@ class PropertiesController < ApplicationController
     def new
         @property = Property.new
         @property.stations.build
+        @property.stations.build
     end
 
     def create
         @property = Property.new(property_params)
         if  @property.save
+            Station.where("line=='' OR name=='' OR minutes IS NULL").each do |station|
+                station.destroy
+            end
             redirect_to  @property ,  notice: 'Property was successfully created.'
         else
             render  :new
