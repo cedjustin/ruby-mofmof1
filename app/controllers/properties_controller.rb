@@ -28,7 +28,10 @@ class PropertiesController < ApplicationController
     end
 
     def edit
-        if @property.stations.last.minutes.blank? &&
+        if @property.stations.last.nil?
+            @property.stations.build
+            @property.stations.build
+        elsif @property.stations.last.minutes.blank? &&
             @property.stations.last.line.blank? &&
             @property.stations.last.name.blank?
         else
@@ -38,6 +41,9 @@ class PropertiesController < ApplicationController
 
     def update
         if  @property.update( property_params )
+            Station.where("line=='' OR name=='' OR minutes IS NULL").each do |station|
+                station.destroy
+            end
             redirect_to  @property ,  notice: 'Property was successfully updated.'
         else
             render  :edit
